@@ -74,8 +74,12 @@ export async function enableVideo(): Promise<void> {
 
     const pc = peerConnection;
     if (pc) {
-      pc.getSenders().find((s) => s.track?.kind === "video")?.replaceTrack(videoTrack)
-        ?? pc.addTrack(videoTrack, localStream || videoStream);
+      const videoSender = pc.getSenders().find((s) => s.track?.kind === "video");
+      if (videoSender) {
+        void videoSender.replaceTrack(videoTrack);
+      } else {
+        pc.addTrack(videoTrack, localStream || videoStream);
+      }
     }
 
     if (localStream) {

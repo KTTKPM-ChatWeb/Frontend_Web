@@ -1,10 +1,10 @@
 # Environment variables for Frontend
 # Copy this to .env.local file
 
-# API Gateway URL (Backend)
+# API Gateway URL (Backend - nginx)
 NEXT_PUBLIC_API_BASE_URL=http://localhost:4321
 NEXT_PUBLIC_HTTP_RETRY_ATTEMPTS=2
 NEXT_PUBLIC_HTTP_RETRY_DELAY_MS=3000
 
-# Realtime Service URL (WebSocket)
-NEXT_PUBLIC_SOCKET_URL=http://localhost:8080
+# Realtime Service URL (WebSocket - qua nginx /ws/)
+NEXT_PUBLIC_SOCKET_URL=http://localhost:4321

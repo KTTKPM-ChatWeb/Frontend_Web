@@ -378,6 +378,8 @@ export default function CallDialogGroup() {
     useCallStore.getState().setMinimized(true);
   }, []);
 
+  const { isSpeaking } = useCallStore();
+
   if (minimized) {
     return (
       <MinimizedBar onClick={() => useCallStore.getState().setMinimized(false)}>
@@ -388,7 +390,6 @@ export default function CallDialogGroup() {
     );
   }
 
-  const { isSpeaking } = useCallStore();
   const totalParticipants = peerStreams.length + 1;
 
   if (status === "ringing" || status === "connecting") {
